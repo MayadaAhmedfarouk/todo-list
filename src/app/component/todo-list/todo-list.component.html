@@ -1,0 +1,88 @@
+
+
+<div class="todolist ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-5">
+        <div class="header mt-5">
+          <h2>My To Do List</h2>
+          <input type="text"  [(ngModel)]="addTaskValue">
+          <span  class="addBtn"  (click)="addTask()">Add</span>
+        </div>
+       
+      </div>
+      <div class="col-md-12">
+        <ul   *ngFor="let task of taskArr">
+
+          <li >  {{ task.task_name }}
+          
+            <button
+            class="btn btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+            (click)="call(task)"
+          >
+            edit
+          </button>
+          &nbsp;
+        
+          <button
+            class="btn btn-outline-danger"
+            (click)="deleteTask(task)"
+          >
+            x
+          </button>
+          
+          </li>
+        
+         </ul>
+      </div>
+     
+      
+    </div>
+  </div>
+
+</div>
+
+<!------modal----------------->
+<div
+ class="modal fade"
+ id="staticBackdrop"
+ data-bs-backdrop="static"
+ data-bs-keyboard="false"
+ tabindex="-1"
+ aria-labelledby="staticBackdropLabel"
+ aria-hidden="true"
+>
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="staticBackdropLabel">
+         Edit task
+       </h5>
+       <button
+         type="button"
+         class="btn-close"
+         data-bs-dismiss="modal"
+         aria-label="Close"
+       ></button>
+     </div>
+     <div class="modal-body">
+       <input
+         type="text"
+         class="form-control"
+         placeholder="enter task"
+         name="task"
+         [(ngModel)]="editTaskValue"
+       />
+       <button
+         class="btn btn-outline-sucess"
+         type="button"
+         (click)="editTask()"
+       >
+         update
+       </button>
+     </div>
+   </div>
+ </div>
+</div>
